@@ -1,3 +1,5 @@
+let {swap} = require("../Helper.js");
+
 function SelectionSort(array) {
     let arrayLen = array.length;
     let halfLength = Math.floor(arrayLen / 2);
@@ -13,14 +15,14 @@ function SelectionSort(array) {
             }
         }
         if (minIndex !== i) {
-            [array[i], array[minIndex]] = [array[minIndex], array[i]];
+            swap(array,i,minIndex)
         }
         if (maxIndex === i) {
             maxIndex = minIndex;
         }
         let lastIndex = arrayLen - i - 1;
         if (maxIndex !== lastIndex) {
-            [array[lastIndex], array[maxIndex]] = [array[maxIndex], array[lastIndex]];
+            swap(array,lastIndex,maxIndex)
         }
     }
     return array;

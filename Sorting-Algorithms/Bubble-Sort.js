@@ -1,3 +1,4 @@
+let {swap,generateArray} = require("../Helper.js");
 function bubbleSort(array) {
     let n = array.length;
     let newN;
@@ -5,7 +6,7 @@ function bubbleSort(array) {
         newN = 0;
         for (let j = 0; j < n - 1; j++) {
             if (array[j] > array[j + 1]) {
-                [array[j], array[j + 1]] = [array[j + 1], array[j]];
+                swap(array,j,j+1);
                 newN = j + 1;
             }
         }
@@ -13,3 +14,5 @@ function bubbleSort(array) {
     }
     return array;
 }
+let a = generateArray(10000000,0,60000);
+console.log(bubbleSort(a));

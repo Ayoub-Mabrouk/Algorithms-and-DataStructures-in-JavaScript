@@ -1,3 +1,5 @@
+let {generateArray} = require("../Helper.js");
+
 function mergeSort(array) {
    if (array.length <= 1) return array;
    const middle = Math.floor(array.length / 2);
@@ -12,5 +14,6 @@ function merge(left, right) {
    return result.concat(left.slice(i), right.slice(j));
 }
 
-let generatedArray = Array.from({ length:10 }, () => Math.floor(Math.random() * (10 - 0 + 1)) + 0);
-console.log(mergeSort(generatedArray));
+let a = generateArray(100000000,0,60000);
+
+console.log(mergeSort(a));
