@@ -1,25 +1,24 @@
 
-let {swap} = require("../Helper.js");
+let {swap,generateArray} = require("../Helper.js");
 
-function pivot(array,start=0,end=array.length-1){
-    let pivot = array[start];
-    let swapIndex = start;
-    for(let i = start+1;i<=end ;i++){
-        if(pivot>array[i]){
-            swapIndex++;
-            swap(array,i,swapIndex);
-        }
+function pivot(arr, start = 0, end = arr.length - 1) {
+    let pivot = arr[start], swapIndex = start;
+    for (let i = start + 1; i <= end; i++) {
+        if (arr[i] < pivot) swap(arr, ++swapIndex, i);
     }
-    swap(array,start,swapIndex);
+    swap(arr, start, swapIndex);
     return swapIndex;
 }
 
-function quickSort(array,left=0,right=array.length-1){
-    if(left<right){
-        let pivotIndex = pivot(array,left,right);
-        quickSort(array,left,pivotIndex-1);
-        quickSort(array,pivotIndex+1,right);
+function quickSort(arr, left = 0, right = arr.length - 1) {
+    if (left < right) {
+        const pivotIndex = pivot(arr, left, right);
+        quickSort(arr, left, pivotIndex - 1);
+        quickSort(arr, pivotIndex + 1, right);
     }
-    return array
+    return arr;
 }
-console.log(quickSort([4,8,2,1,5,7,6,3]));
+let a = generateArray(5,10);
+console.log(`original ${a}`);
+
+console.log(quickSort(a));
